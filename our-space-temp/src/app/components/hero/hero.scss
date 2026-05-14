@@ -1,0 +1,133 @@
+:host {
+  display: block;
+}
+
+/* ---- Particles ---- */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: #F4C6D7;
+  opacity: 0;
+  animation: floatUp linear infinite;
+}
+.particle-1 { width: 8px;  height: 8px;  left: 10%; animation-duration: 7s;  animation-delay: 0s;   }
+.particle-2 { width: 5px;  height: 5px;  left: 80%; animation-duration: 9s;  animation-delay: 1s;   }
+.particle-3 { width: 10px; height: 10px; left: 25%; animation-duration: 8s;  animation-delay: 2s;   }
+.particle-4 { width: 6px;  height: 6px;  left: 65%; animation-duration: 6s;  animation-delay: 0.5s; }
+.particle-5 { width: 4px;  height: 4px;  left: 45%; animation-duration: 10s; animation-delay: 1.5s; }
+.particle-6 { width: 7px;  height: 7px;  left: 88%; animation-duration: 7s;  animation-delay: 3s;   }
+
+@keyframes floatUp {
+  0%   { transform: translateY(60vh) scale(0.5); opacity: 0; }
+  10%  { opacity: 0.4; }
+  90%  { opacity: 0.3; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+/* ---- Background doodles ---- */
+.doodle-svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+}
+.doodle-lg {
+  font-size: 30px;
+  fill: #E8A0BF;
+  opacity: 0.2;
+  font-family: 'Caveat', cursive;
+}
+.doodle-sm {
+  font-size: 16px;
+  fill: #E8A0BF;
+  opacity: 0.18;
+  font-family: 'Caveat', cursive;
+}
+.doodle-dot {
+  fill: #E8A0BF;
+  opacity: 0.18;
+}
+.doodle-path {
+  stroke: #E8A0BF;
+  stroke-width: 1.5;
+  fill: none;
+  opacity: 0.18;
+}
+
+/* ---- Float-in ---- */
+.float-in {
+  animation: floatIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ---- Reveal layout ---- */
+.reveal-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.reveal-photo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reveal-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 0 32px;
+  flex-shrink: 0;
+}
+
+.divider-line {
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, #E8A0BF, transparent);
+}
+
+.reveal-message {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 0 1rem 2rem;
+}
+
+.msg-line {
+  width: 48px;
+  height: 1px;
+  background: #E8A0BF;
+  opacity: 0.5;
+}
+
+/* ---- Polaroid ---- */
+.polaroid {
+  background: white;
+  padding: 12px 12px 44px;
+  box-shadow:
+    0 8px 30px rgba(0,0,0,0.10),
+    0 2px 6px rgba(0,0,0,0.06);
+  transform: rotate(-2.5deg);
+  max-width: 320px;
+  width: 90%;
+  transition: transform 0.4s ease;
+
+  &:hover {
+    transform: rotate(0deg) scale(1.02);
+  }
+}
+
+.polaroid__img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+}

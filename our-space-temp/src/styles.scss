@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================= ROOT VARIABLES ================= */
+
+:root {
+
+  /* Backgrounds */
+  --color-cream: #FFF8F2;
+  --color-paper: #FDEFE3;
+  --color-paper-dark: #F7E2D2;
+
+  /* Borders */
+  --color-beige: #EED9C8;
+
+  /* Accent */
+  --color-pink: #E8A0BF;
+  --color-pink-light: #FBE1EC;
+  --color-rose: #C85C8E;
+  --color-hover: #D977A0;
+
+  /* Text */
+  --color-text: #4A3B35;
+  --color-text-secondary: #7A6A63;
+  --color-muted: #A08D85;
+
+  /* Extra */
+  --color-gold: #D6B37A;
+  --color-brown: #8B6B5C;
+}
+
+/* ================= GLOBAL RESET ================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  font-family: 'Inter', sans-serif;
+
+  background: var(--color-cream);
+
+  color: var(--color-text);
+
+  overflow-x: hidden;
+}
+
+/* ================= TYPOGRAPHY ================= */
+
+.font-handwritten {
+  font-family: 'Caveat', cursive;
+}
+
+/* ================= GLOBAL SELECTION ================= */
+
+::selection {
+  background: rgba(232, 160, 191, 0.3);
+}
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f7ebe2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d9b8c7;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c998b0;
+}
+
+/* ================= SHARED ANIMATIONS ================= */
+
+@keyframes softFade {
+
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}

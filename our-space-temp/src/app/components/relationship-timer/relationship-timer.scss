@@ -1,0 +1,89 @@
+/* ===== HOURGLASS FIXED ===== */
+
+.glass {
+  text-align: center;
+}
+
+.hourglass {
+  width: 140px;
+  height: 220px;
+  margin: auto;
+  position: relative;
+}
+
+/* TOP SAND (shrinking) */
+.top-sand {
+  width: 100%;
+  height: 50%;
+  background: #F7E2D2;
+
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    60% 100%,
+    40% 100%
+  );
+
+  animation: topDrain 6s infinite ease-in-out;
+}
+
+/* NECK (glass pinch point) */
+.neck {
+  width: 100%;
+  height: 10%;
+  position: relative;
+}
+
+.neck::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  transform: translateX(-50%);
+  background: #E8A0BF;
+  animation: flow 0.8s infinite linear;
+}
+
+/* BOTTOM SAND (growing) */
+.bottom-sand {
+  width: 100%;
+  height: 50%;
+  background: #F7E2D2;
+
+  clip-path: polygon(
+    40% 0%,
+    60% 0%,
+    100% 100%,
+    0% 100%
+  );
+
+  animation: bottomFill 6s infinite ease-in-out;
+}
+
+/* TEXT */
+.glass-text {
+  margin-top: 18px;
+  color: #7A6A63;
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes topDrain {
+  0% { transform: scaleY(1); opacity: 1; }
+  50% { transform: scaleY(0.2); opacity: 0.6; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+
+@keyframes bottomFill {
+  0% { transform: scaleY(0.2); }
+  50% { transform: scaleY(1); }
+  100% { transform: scaleY(0.2); }
+}
+
+@keyframes flow {
+  0% { opacity: 0.3; height: 0%; }
+  50% { opacity: 1; height: 100%; }
+  100% { opacity: 0.3; height: 0%; }
+}

@@ -1,0 +1,66 @@
+
+<section class="map">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>our distance</h1>
+    <p>{{ distanceKm }} km apart, same sky ♡</p>
+  </div>
+
+  <!-- TIME ZONE INFO -->
+  <div class="timezones">
+    <div>🇮🇳 Mehsana: {{ indiaTime }}</div>
+    <div>🇨🇦 Toronto: {{ canadaTime }}</div>
+  </div>
+
+  <!-- MAP -->
+  <div class="map-box">
+
+    <svg viewBox="0 0 1000 500" class="svg-map">
+
+      <!-- 🌅 DAY/NIGHT BACKGROUND -->
+      <defs>
+        <linearGradient id="sky" x1="0%" x2="100%">
+          <stop offset="0%" stop-color="#FFF8F2"/>
+          <stop offset="100%" stop-color="#FDEFE3"/>
+        </linearGradient>
+      </defs>
+
+      <rect width="1000" height="500" fill="url(#sky)"></rect>
+
+      <!-- CONNECTION PATH -->
+      <path
+        d="M 180 220 C 350 100, 600 100, 820 140"
+        stroke="#E8A0BF"
+        stroke-width="3"
+        fill="none"
+        class="line"
+      />
+
+      <!-- ✈️ AIRPLANE -->
+      <circle class="plane" r="6">
+        <animateMotion dur="6s" repeatCount="indefinite">
+          <mpath href="#path"/>
+        </animateMotion>
+      </circle>
+
+      <!-- hidden path for plane -->
+      <path
+        id="path"
+        d="M 180 220 C 350 100, 600 100, 820 140"
+        fill="none"
+      ></path>
+
+      <!-- INDIA PIN -->
+      <circle cx="180" cy="220" r="10" class="pin-india"/>
+      <text x="140" y="255" class="label">Mehsana</text>
+
+      <!-- CANADA PIN -->
+      <circle cx="820" cy="140" r="10" class="pin-canada"/>
+      <text x="790" y="110" class="label">Toronto</text>
+
+    </svg>
+
+  </div>
+
+</section>

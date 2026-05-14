@@ -1,0 +1,73 @@
+<nav class="w-full px-6 py-4 border-b border-beige bg-cream sticky top-0 z-50">
+  
+  <div class="flex items-center justify-between">
+    
+    <!-- Logo -->
+    <div class="flex flex-col leading-tight">
+      <span class="font-handwritten text-2xl text-pink-deep">Smit & Pranami</span>
+      <span class="text-xs text-text-muted tracking-widest uppercase">Our Space</span>
+    </div>
+
+    <!-- Desktop Links -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#" class="text-sm text-text-secondary hover:text-pink-deep transition-colors duration-200">Home</a>
+      <a href="#" class="text-sm text-text-secondary hover:text-pink-deep transition-colors duration-200">Memories</a>
+      <a href="#" class="text-sm text-text-secondary hover:text-pink-deep transition-colors duration-200">Letters</a>
+      <a href="#" class="text-sm text-text-secondary hover:text-pink-deep transition-colors duration-200">Notes</a>
+    </div>
+
+    <!-- Desktop Right -->
+    <div class="hidden md:flex items-center gap-3 relative create-dropdown">
+      <span class="text-pink text-xl">♡</span>
+      <button 
+        (click)="toggleCreate()"
+        class="text-sm bg-pink text-white px-4 py-2 rounded-full hover:bg-pink-deep transition-colors duration-200">
+        + Create
+      </button>
+
+      <!-- Dropdown -->
+      <div 
+        *ngIf="isCreateOpen"
+        class="absolute top-12 right-0 bg-paper border border-beige rounded-2xl shadow-lg py-2 w-44 z-50">
+        <button (click)="onCreate('memory')" class="w-full text-left px-4 py-2.5 text-sm text-text-secondary hover:bg-paper-dark hover:text-pink-deep transition-colors duration-150">
+          📸 Memory
+        </button>
+        <button (click)="onCreate('letter')" class="w-full text-left px-4 py-2.5 text-sm text-text-secondary hover:bg-paper-dark hover:text-pink-deep transition-colors duration-150">
+          💌 Letter
+        </button>
+        <button (click)="onCreate('note')" class="w-full text-left px-4 py-2.5 text-sm text-text-secondary hover:bg-paper-dark hover:text-pink-deep transition-colors duration-150">
+          📝 Note
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button 
+      class="md:hidden text-text-secondary p-2"
+      (click)="toggleMenu()">
+      <div class="w-6 h-0.5 bg-current mb-1.5 transition-all duration-200"></div>
+      <div class="w-6 h-0.5 bg-current mb-1.5 transition-all duration-200"></div>
+      <div class="w-6 h-0.5 bg-current transition-all duration-200"></div>
+    </button>
+
+  </div>
+
+  <!-- Mobile Menu -->
+  <div 
+    class="md:hidden overflow-hidden transition-all duration-300"
+    [class.max-h-0]="!isOpen"
+    [class.max-h-96]="isOpen">
+    <div class="flex flex-col gap-4 pt-4 pb-2">
+      <a href="#" class="text-sm text-text-secondary hover:text-pink-deep transition-colors duration-200">Home</a>
+      <a href="#" class="text-sm text-text-secondary hover:text-pink-deep transition-colors duration-200">Memories</a>
+      <a href="#" class="text-sm text-text-secondary hover:text-pink-deep transition-colors duration-200">Letters</a>
+      <a href="#" class="text-sm text-text-secondary hover:text-pink-deep transition-colors duration-200">Notes</a>
+      <div class="flex flex-col gap-2 pt-2 border-t border-beige">
+        <button (click)="onCreate('memory')" class="text-left text-sm text-text-secondary hover:text-pink-deep transition-colors duration-200">📸 Memory</button>
+        <button (click)="onCreate('letter')" class="text-left text-sm text-text-secondary hover:text-pink-deep transition-colors duration-200">💌 Letter</button>
+        <button (click)="onCreate('note')" class="text-left text-sm text-text-secondary hover:text-pink-deep transition-colors duration-200">📝 Note</button>
+      </div>
+    </div>
+  </div>
+
+</nav>

@@ -1,0 +1,132 @@
+<section class="min-h-screen bg-cream flex flex-col items-center justify-center px-4 relative overflow-hidden">
+
+  <!-- Background doodles -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <svg class="doodle-svg" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <text x="60"   y="120"  class="doodle-lg">♡</text>
+      <text x="1100" y="200"  class="doodle-lg">♡</text>
+      <text x="980"  y="680"  class="doodle-lg">♡</text>
+      <text x="80"   y="700"  class="doodle-lg">♡</text>
+      <text x="550"  y="60"   class="doodle-sm">♡</text>
+      <text x="300"  y="750"  class="doodle-sm">♡</text>
+      <text x="900"  y="90"   class="doodle-sm">♡</text>
+      <text x="160"  y="300"  class="doodle-sm">✦</text>
+      <text x="1050" y="400"  class="doodle-sm">✦</text>
+      <text x="200"  y="550"  class="doodle-sm">✦</text>
+      <text x="1000" y="600"  class="doodle-sm">✦</text>
+      <text x="700"  y="740"  class="doodle-sm">✦</text>
+      <text x="100"  y="450"  class="doodle-lg">✿</text>
+      <text x="1080" y="500"  class="doodle-lg">✿</text>
+      <text x="450"  y="80"   class="doodle-sm">✿</text>
+      <text x="750"  y="760"  class="doodle-sm">✿</text>
+      <circle cx="350" cy="120" r="3" class="doodle-dot"/>
+      <circle cx="850" cy="150" r="2" class="doodle-dot"/>
+      <circle cx="150" cy="650" r="3" class="doodle-dot"/>
+      <circle cx="1050" cy="300" r="2" class="doodle-dot"/>
+      <circle cx="600" cy="720" r="3" class="doodle-dot"/>
+      <path d="M 50 200 Q 80 185 110 200 Q 140 215 170 200"  class="doodle-path"/>
+      <path d="M 1020 650 Q 1050 635 1080 650 Q 1110 665 1140 650" class="doodle-path"/>
+    </svg>
+  </div>
+
+  <!-- Floating particles -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="particle particle-4"></div>
+    <div class="particle particle-5"></div>
+    <div class="particle particle-6"></div>
+  </div>
+
+  <!-- ========== STEP 1: QUESTION ========== -->
+  <div *ngIf="step === 1" class="relative z-10 flex flex-col items-center text-center max-w-2xl mx-auto px-4">
+
+    <p class="font-handwritten text-pink text-xl mb-6 float-in" style="animation-delay: 0.1s">
+      a little question, just for you ♡
+    </p>
+
+    <h1 class="font-handwritten text-6xl md:text-7xl text-text leading-tight mb-6 float-in" style="animation-delay: 0.4s">
+      Will you always<br/>stay with me?
+    </h1>
+
+    <p class="font-handwritten text-text-secondary text-xl leading-relaxed mb-12 float-in" style="animation-delay: 0.7s">
+      even through distance, late night calls,<br/>
+      and every timezone apart ♡
+    </p>
+
+    <div class="flex items-center gap-8 relative float-in" style="animation-delay: 1s">
+      <button
+        class="no-btn font-handwritten text-xl text-text-secondary border border-beige px-8 py-3 rounded-full hover:border-pink transition-all duration-300"
+        (mouseenter)="onNoHover()"
+        (click)="onNoClick()">
+        {{ noText }}
+      </button>
+      <button
+        class="font-handwritten text-xl text-white bg-pink px-12 py-3 rounded-full hover:bg-pink-deep transition-all duration-300 shadow-lg hover:scale-105"
+        (click)="onYesClick()">
+        Yes ♡
+      </button>
+    </div>
+
+    <p *ngIf="noClickCount > 0" class="font-handwritten text-pink text-lg mt-8 float-in" style="animation-delay: 0s">
+      {{ noReaction }}
+    </p>
+
+  </div>
+
+  <!-- ========== STEP 2: REVEAL ========== -->
+  <div *ngIf="step === 2" class="relative z-10 flex flex-col items-center w-full max-w-5xl mx-auto px-6">
+
+    <p class="font-handwritten text-pink-deep text-2xl mb-10 text-center float-in" style="animation-delay: 0.1s">
+      i knew you'd say yes ♡
+    </p>
+
+    <div class="reveal-wrap">
+
+      <div class="reveal-photo float-in" style="animation-delay: 0.3s">
+        <div class="polaroid">
+          <img
+            src="https://images.unsplash.com/photo-1529519195486-6f7462d04b4e?w=600&q=80"
+            alt="our moment"
+            class="polaroid__img"
+          />
+          <p class="font-handwritten text-text-muted text-sm mt-3 text-center">us, always ♡</p>
+        </div>
+      </div>
+
+      <div class="reveal-divider float-in" style="animation-delay: 0.5s">
+        <div class="divider-line"></div>
+        <span class="font-handwritten text-pink text-2xl">♡</span>
+        <div class="divider-line"></div>
+      </div>
+
+      <div class="reveal-message float-in" style="animation-delay: 0.6s">
+        <p class="font-handwritten text-pink-deep text-4xl mb-5">Pranami,</p>
+        <p class="font-handwritten text-text text-xl leading-relaxed mb-4">
+          No matter how many miles<br/>sit between us,
+        </p>
+        <p class="font-handwritten text-text text-xl leading-relaxed mb-4">
+          you are always right here.
+        </p>
+        <p class="font-handwritten text-text-muted text-lg leading-relaxed mb-8">
+          This little space is ours —<br/>
+          every memory, every letter,<br/>
+          every note, forever.
+        </p>
+        <div class="msg-line"></div>
+        <p class="font-handwritten text-pink text-2xl mt-5">— Smit ♡</p>
+      </div>
+
+    </div>
+
+    <button
+      class="font-handwritten text-xl text-white bg-pink px-12 py-3 rounded-full hover:bg-pink-deep transition-all duration-500 shadow-lg mt-12 float-in hover:scale-105"
+      style="animation-delay: 0.9s"
+      (click)="enterApp()">
+      enter our space →
+    </button>
+
+  </div>
+
+</section>

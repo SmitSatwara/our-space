@@ -1,0 +1,88 @@
+
+.map {
+  min-height: 100vh;
+  background: #FFF8F2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Caveat', cursive;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 42px;
+  color: #4A3B35;
+}
+
+.header p {
+  color: #7A6A63;
+  font-size: 20px;
+}
+
+/* TIMEZONES */
+.timezones {
+  display: flex;
+  gap: 40px;
+  margin: 10px 0 20px;
+  color: #7A6A63;
+}
+
+/* MAP BOX */
+.map-box {
+  width: 900px;
+  height: 450px;
+  border-radius: 20px;
+  border: 1px solid #EED9C8;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+}
+
+.svg-map {
+  width: 100%;
+  height: 100%;
+}
+
+/* LINE */
+.line {
+  stroke-dasharray: 10;
+  animation: flow 3s linear infinite;
+}
+
+/* AIRPLANE */
+.plane {
+  fill: #E8A0BF;
+}
+
+/* PINS */
+.pin-india {
+  fill: #E8A0BF;
+  animation: pulse 1.8s infinite;
+}
+
+.pin-canada {
+  fill: #D977A0;
+  animation: pulse 1.8s infinite;
+}
+
+/* LABELS */
+.label {
+  font-size: 18px;
+  fill: #4A3B35;
+}
+
+/* ANIMATIONS */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.6; }
+}
+
+@keyframes flow {
+  0% { stroke-dashoffset: 200; }
+  100% { stroke-dashoffset: 0; }
+}
