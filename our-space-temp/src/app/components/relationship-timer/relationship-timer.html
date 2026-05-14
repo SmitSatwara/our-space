@@ -1,18 +1,33 @@
-<!-- RIGHT: HOURGLASS -->
-<div class="glass">
+<section class="rt-section">
 
-  <div class="hourglass">
+  <p class="rt-eyebrow font-handwritten">together since november 14, 2023 ♡</p>
 
-    <div class="top-sand"></div>
-
-    <div class="neck"></div>
-
-    <div class="bottom-sand"></div>
-
+  <div class="rt-days-wrap">
+    <span class="rt-days-num font-handwritten">{{ days }}</span>
+    <span class="rt-days-label">days</span>
   </div>
 
-  <p class="glass-text">
-    time is passing… but we stay ♡
-  </p>
+  <p class="rt-subtitle font-handwritten">of choosing each other, every single day</p>
 
-</div>
+  <div class="rt-divider"></div>
+
+  <div class="rt-units-wrap">
+    <div class="rt-units">
+      <div class="rt-unit">
+        <span class="rt-unit-num font-handwritten">{{ pad(hours) }}</span>
+        <span class="rt-unit-label">hours</span>
+      </div>
+      <div class="rt-unit">
+        <span class="rt-unit-num font-handwritten">{{ pad(minutes) }}</span>
+        <span class="rt-unit-label">minutes</span>
+      </div>
+      <div class="rt-unit" [class.ticking]="tickFlash">
+        <span class="rt-unit-num font-handwritten">{{ pad(seconds) }}</span>
+        <span class="rt-unit-label">seconds</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="rt-footer font-handwritten">and counting ♡</p>
+
+</section>

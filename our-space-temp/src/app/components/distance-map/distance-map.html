@@ -1,65 +1,80 @@
+<section class="dm-section">
 
-<section class="map">
+  <p class="dm-eyebrow font-handwritten">same sky, different clocks ♡</p>
+  <h2 class="dm-title font-handwritten">our distance</h2>
+  <p class="dm-distance">{{ distanceKm | number }} km apart</p>
 
-  <!-- HEADER -->
-  <div class="header">
-    <h1>our distance</h1>
-    <p>{{ distanceKm }} km apart, same sky ♡</p>
-  </div>
+  <div class="dm-map-wrap">
 
-  <!-- TIME ZONE INFO -->
-  <div class="timezones">
-    <div>🇮🇳 Mehsana: {{ indiaTime }}</div>
-    <div>🇨🇦 Toronto: {{ canadaTime }}</div>
-  </div>
-
-  <!-- MAP -->
-  <div class="map-box">
-
-    <svg viewBox="0 0 1000 500" class="svg-map">
-
-      <!-- 🌅 DAY/NIGHT BACKGROUND -->
+    <svg class="dm-map-svg" viewBox="0 0 860 400" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="sky" x1="0%" x2="100%">
-          <stop offset="0%" stop-color="#FFF8F2"/>
-          <stop offset="100%" stop-color="#FDEFE3"/>
-        </linearGradient>
+        <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#E8A0BF" opacity="0.6"/>
+        </marker>
       </defs>
 
-      <rect width="1000" height="500" fill="url(#sky)"></rect>
+      <!-- Landmasses -->
+      <path d="M370,95 L385,88 L400,85 L415,88 L420,100 L430,95 L440,98 L445,110 L435,118 L420,122 L405,125 L390,120 L375,115 Z" fill="#EED9C8" opacity="0.6"/>
+      <path d="M375,130 L395,125 L415,128 L425,145 L428,165 L420,190 L408,210 L395,215 L382,208 L372,185 L368,160 L370,140 Z" fill="#EED9C8" opacity="0.6"/>
+      <path d="M445,75 L480,68 L520,65 L560,70 L590,80 L610,90 L615,105 L600,115 L570,118 L540,115 L510,110 L480,105 L460,100 L448,92 Z" fill="#EED9C8" opacity="0.6"/>
+      <path d="M545,112 L565,110 L575,120 L572,138 L560,155 L548,158 L538,148 L535,132 L540,118 Z" fill="#F4C6D7" opacity="0.7"/>
+      <path d="M100,75 L150,68 L200,65 L235,72 L245,88 L240,105 L225,118 L200,122 L170,118 L140,112 L115,105 L100,95 Z" fill="#EED9C8" opacity="0.6"/>
+      <path d="M155,68 L195,60 L220,62 L235,72 L220,78 L190,75 L165,72 Z" fill="#EED9C8" opacity="0.5"/>
+      <path d="M175,140 L200,135 L218,142 L222,165 L218,195 L205,215 L192,218 L180,205 L172,178 L170,155 Z" fill="#EED9C8" opacity="0.6"/>
+      <path d="M245,50 L270,42 L285,48 L282,65 L265,68 L248,62 Z" fill="#EED9C8" opacity="0.4"/>
 
-      <!-- CONNECTION PATH -->
-      <path
-        d="M 180 220 C 350 100, 600 100, 820 140"
-        stroke="#E8A0BF"
-        stroke-width="3"
-        fill="none"
-        class="line"
-      />
+      <!-- Connection arc -->
+      <path id="arcPath"
+        d="M 550,130 C 530,40 280,35 190,108"
+        stroke="#E8A0BF" stroke-width="1.5" fill="none" stroke-dasharray="6 5" opacity="0.8">
+        <animate attributeName="stroke-dashoffset" from="220" to="0" dur="3s" repeatCount="indefinite"/>
+      </path>
 
-      <!-- ✈️ AIRPLANE -->
-      <circle class="plane" r="6">
-        <animateMotion dur="6s" repeatCount="indefinite">
-          <mpath href="#path"/>
+      <!-- Animated plane dot -->
+      <circle r="5" fill="#C85C8E" opacity="0.9">
+        <animateMotion dur="6s" repeatCount="indefinite" rotate="auto">
+          <mpath href="#arcPath"/>
         </animateMotion>
       </circle>
 
-      <!-- hidden path for plane -->
-      <path
-        id="path"
-        d="M 180 220 C 350 100, 600 100, 820 140"
-        fill="none"
-      ></path>
+      <!-- Ahmedabad pin -->
+      <circle cx="550" cy="130" r="8" fill="#E8A0BF" opacity="0.3">
+        <animate attributeName="r" values="8;14;8" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.3;0.08;0.3" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="550" cy="130" r="5" fill="#C85C8E"/>
 
-      <!-- INDIA PIN -->
-      <circle cx="180" cy="220" r="10" class="pin-india"/>
-      <text x="140" y="255" class="label">Mehsana</text>
+      <!-- Toronto pin -->
+      <circle cx="190" cy="108" r="8" fill="#E8A0BF" opacity="0.3">
+        <animate attributeName="r" values="8;14;8" dur="2s" begin="1s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.3;0.08;0.3" dur="2s" begin="1s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="190" cy="108" r="5" fill="#D977A0"/>
 
-      <!-- CANADA PIN -->
-      <circle cx="820" cy="140" r="10" class="pin-canada"/>
-      <text x="790" y="110" class="label">Toronto</text>
+      <!-- Labels -->
+      <text x="558" y="126" font-family="Caveat, cursive" font-size="15" fill="#4A3B35" font-weight="600">Ahmedabad</text>
+      <text x="558" y="142" font-family="Inter, sans-serif" font-size="10" fill="#A08D85" letter-spacing="0.05em">INDIA</text>
 
+      <text x="142" y="100" font-family="Caveat, cursive" font-size="15" fill="#4A3B35" font-weight="600">Toronto</text>
+      <text x="148" y="115" font-family="Inter, sans-serif" font-size="10" fill="#A08D85" letter-spacing="0.05em">CANADA</text>
     </svg>
+
+    <div class="dm-clocks">
+      <div class="dm-clock">
+        <span class="dm-clock-city">Ahmedabad</span>
+        <span class="dm-clock-time font-handwritten">{{ indiaTime }}</span>
+        <span class="dm-clock-tz">IST · UTC +5:30</span>
+      </div>
+      <div class="dm-clock-mid font-handwritten">
+        ♡<br/>
+        <span class="dm-clock-gap">9.5 hrs apart</span>
+      </div>
+      <div class="dm-clock dm-clock-right">
+        <span class="dm-clock-city">Toronto</span>
+        <span class="dm-clock-time font-handwritten">{{ canadaTime }}</span>
+        <span class="dm-clock-tz">EDT · UTC −4:00</span>
+      </div>
+    </div>
 
   </div>
 

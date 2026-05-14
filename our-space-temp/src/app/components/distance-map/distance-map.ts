@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,39 +8,36 @@ import { CommonModule } from '@angular/common';
   templateUrl: './distance-map.html',
   styleUrl: './distance-map.scss'
 })
-export class DistanceMap implements OnInit {
+export class DistanceMap implements OnInit, OnDestroy {
 
-  mehsana = { x: 180, y: 220 };
-  toronto = { x: 820, y: 140 };
+  distanceKm = 11357;
+  indiaTime = '';
+  canadaTime = '';
 
-  distanceKm = 0;
-
-  // simple timezone labels
-  indiaTime = 'IST +5:30';
-  canadaTime = 'EST -5:00';
+  private interval: any;
 
   ngOnInit() {
-    this.distanceKm = this.haversine(
-      23.5880, 72.3693,
-      43.6532, -79.3832
-    );
+    this.updateClocks();
+    this.interval = setInterval(() => this.updateClocks(), 10000);
   }
 
-  haversine(lat1:number, lon1:number, lat2:number, lon2:number) {
-    const R = 6371;
-    const dLat = this.rad(lat2 - lat1);
-    const dLon = this.rad(lon2 - lon1);
-
-    const a =
-      Math.sin(dLat/2)**2 +
-      Math.cos(this.rad(lat1)) *
-      Math.cos(this.rad(lat2)) *
-      Math.sin(dLon/2)**2;
-
-    return Math.round(2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
+  ngOnDestroy() {
+    clearInterval(this.interval);
   }
 
-  rad(v:number) {
-    return v * Math.PI / 180;
+  updateClocks() {
+    const now = new Date();
+    this.indiaTime  = this.formatTime(now, 5.5);
+    this.canadaTime = this.formatTime(now, -4);
+  }
+
+  formatTime(date: Date, offsetHours: number): string {
+    const utc = date.getTime() + date.getTimezoneOffset() * 60000;
+    const local = new Date(utc + offsetHours * 3600000);
+    const h = local.getHours();
+    const m = String(local.getMinutes()).padStart(2, '0');
+    const ampm = h >= 12 ? 'pm' : 'am';
+    const h12 = h % 12 || 12;
+    return `${h12}:${m} ${ampm}`;
   }
 }
