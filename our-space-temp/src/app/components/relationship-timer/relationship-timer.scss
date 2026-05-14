@@ -1,117 +1,130 @@
-:host { display: block; }
-
-.rt-section {
-  min-height: 100vh;
-  background: var(--color-cream);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 80px 24px;
-  animation: fadeUp 0.8s 0.1s cubic-bezier(0.16,1,0.3,1) both;
+:host {
+  display: block;
+  height: 100%;
 }
 
-.rt-eyebrow {
-  font-size: 22px;
-  color: var(--color-pink);
-  margin: 0 0 16px;
-}
-
-.rt-days-wrap {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-
-.rt-days-num {
-  font-size: clamp(72px, 14vw, 120px);
-  font-weight: 700;
-  color: var(--color-text);
-  line-height: 1;
-}
-
-.rt-days-label {
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--color-text-secondary);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.rt-subtitle {
-  font-size: 20px;
-  color: var(--color-muted);
-  margin: 0 0 56px;
-}
-
-.rt-divider {
-  width: 48px;
-  height: 1px;
-  background: var(--color-pink);
-  margin: 0 auto 56px;
-}
-
-.rt-units-wrap {
-  background: #FFFDF9;
-  border: 1px solid var(--color-beige);
+.timer-card {
+  background: #ffffff;
   border-radius: 20px;
-}
-
-.rt-units {
-  display: flex;
-  align-items: stretch;
-}
-
-.rt-unit {
+  border: 1px solid #EED9C8;
+  padding: 24px 20px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 32px 40px;
-  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+}
 
-  &:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 40px;
-    width: 1px;
-    background: var(--color-beige);
+.since-label {
+  font-family: 'Caveat', cursive;
+  color: #D977A0;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 2px;
+}
+
+.days-number {
+  font-family: 'Caveat', cursive;
+  font-size: 80px;
+  font-weight: 700;
+  color: #4A3B35;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.days-unit {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #4A3B35;
+  margin-top: -4px;
+}
+
+.choosing {
+  font-family: 'Caveat', cursive;
+  font-size: 15px;
+  color: #7A6A63;
+  margin: 6px 0 8px;
+}
+
+.divider-line {
+  width: 32px;
+  height: 1px;
+  background: #E8A0BF;
+  opacity: 0.5;
+  margin-bottom: 10px;
+}
+
+.timer-box {
+  background: #ffedf5;
+  border: 1px solid #EED9C8;
+  border-radius: 14px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.t-seg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 48px;
+}
+
+.t-num {
+  font-family: 'Caveat', cursive;
+  font-size: 34px;
+  font-weight: 700;
+  color: #4A3B35;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.15s ease;
+
+  &.sec-flash {
+    color: #C85C8E;
   }
 }
 
-.rt-unit-num {
-  font-size: 56px;
+.t-lbl {
+  font-size: 7px;
   font-weight: 700;
-  color: var(--color-text);
-  line-height: 1;
-  min-width: 80px;
-  text-align: center;
-  transition: color 0.15s ease;
+  letter-spacing: 2px;
+  color: #A08D85;
+  margin-top: 2px;
 }
 
-.ticking .rt-unit-num {
-  color: var(--color-pink);
+.t-sep {
+  font-size: 20px;
+  color: #E8A0BF;
+  margin-bottom: 10px;
+  font-weight: 300;
 }
 
-.rt-unit-label {
+.counting {
+  font-family: 'Caveat', cursive;
+  font-size: 16px;
+  color: #D977A0;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.hg-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.hg-text {
+  font-family: 'Caveat', cursive;
   font-size: 11px;
-  font-weight: 500;
-  color: var(--color-muted);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-top: 8px;
-}
-
-.rt-footer {
-  font-size: 18px;
-  color: var(--color-rose);
-  margin-top: 48px;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  color: #A08D85;
+  text-align: center;
+  margin: 0;
 }

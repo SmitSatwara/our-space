@@ -10,34 +10,44 @@ import { CommonModule } from '@angular/common';
 })
 export class DistanceMap implements OnInit, OnDestroy {
 
-  distanceKm = 11357;
-  indiaTime = '';
-  canadaTime = '';
+  private rafId: number = 0;
+  private sendT = 0;
+  private recvT = 0.5;
 
-  private interval: any;
+  ngOnInit() { this.loop(); }
+  ngOnDestroy() { cancelAnimationFrame(this.rafId); }
 
-  ngOnInit() {
+  private loop() {
     this.updateClocks();
-    this.interval = setInterval(() => this.updateClocks(), 10000);
+    this.updateHearts();
+    this.rafId = requestAnimationFrame(() => this.loop());
   }
 
-  ngOnDestroy() {
-    clearInterval(this.interval);
-  }
-
-  updateClocks() {
+  private updateClocks() {
     const now = new Date();
-    this.indiaTime  = this.formatTime(now, 5.5);
-    this.canadaTime = this.formatTime(now, -4);
+    const fmt = (tz: string) =>
+      new Intl.DateTimeFormat('en-US', {
+        hour: '2-digit', minute: '2-digit', hour12: true, timeZone: tz
+      }).format(now).toLowerCase();
+    const a = document.getElementById('ahm-time');
+    const t = document.getElementById('tor-time');
+    if (a) a.textContent = fmt('Asia/Kolkata');
+    if (t) t.textContent = fmt('America/Toronto');
   }
 
-  formatTime(date: Date, offsetHours: number): string {
-    const utc = date.getTime() + date.getTimezoneOffset() * 60000;
-    const local = new Date(utc + offsetHours * 3600000);
-    const h = local.getHours();
-    const m = String(local.getMinutes()).padStart(2, '0');
-    const ampm = h >= 12 ? 'pm' : 'am';
-    const h12 = h % 12 || 12;
-    return `${h12}:${m} ${ampm}`;
+  private qbez(x0: number, y0: number, cx: number, cy: number, x1: number, y1: number, t: number) {
+    const m = 1 - t;
+    return { x: m*m*x0 + 2*m*t*cx + t*t*x1, y: m*m*y0 + 2*m*t*cy + t*t*y1 };
+  }
+
+  private updateHearts() {
+    this.sendT = (this.sendT + 0.003) % 1;
+    this.recvT = (this.recvT + 0.003) % 1;
+    const sp = this.qbez(316, 88, 215, 18, 110, 73, this.sendT);
+    const rp = this.qbez(112, 80, 215, 158, 314, 96, this.recvT);
+    const hs = document.getElementById('heart-send');
+    const hr = document.getElementById('heart-recv');
+    if (hs) { hs.setAttribute('x', String(sp.x)); hs.setAttribute('y', String(sp.y)); }
+    if (hr) { hr.setAttribute('x', String(rp.x)); hr.setAttribute('y', String(rp.y)); }
   }
 }

@@ -1,33 +1,88 @@
-<section class="rt-section">
+<div class="timer-card">
 
-  <p class="rt-eyebrow font-handwritten">together since november 14, 2023 ♡</p>
+  <p class="since-label">since nov 14, 2023 ♡</p>
 
-  <div class="rt-days-wrap">
-    <span class="rt-days-num font-handwritten">{{ days }}</span>
-    <span class="rt-days-label">days</span>
-  </div>
+  <div class="days-number" id="day-count">0</div>
+  <div class="days-unit">DAYS</div>
 
-  <p class="rt-subtitle font-handwritten">of choosing each other, every single day</p>
+  <p class="choosing">of choosing each other</p>
 
-  <div class="rt-divider"></div>
+  <div class="divider-line"></div>
 
-  <div class="rt-units-wrap">
-    <div class="rt-units">
-      <div class="rt-unit">
-        <span class="rt-unit-num font-handwritten">{{ pad(hours) }}</span>
-        <span class="rt-unit-label">hours</span>
-      </div>
-      <div class="rt-unit">
-        <span class="rt-unit-num font-handwritten">{{ pad(minutes) }}</span>
-        <span class="rt-unit-label">minutes</span>
-      </div>
-      <div class="rt-unit" [class.ticking]="tickFlash">
-        <span class="rt-unit-num font-handwritten">{{ pad(seconds) }}</span>
-        <span class="rt-unit-label">seconds</span>
-      </div>
+  <div class="timer-box">
+    <div class="t-seg">
+      <div class="t-num" id="t-hrs">00</div>
+      <div class="t-lbl">HRS</div>
+    </div>
+    <div class="t-sep">|</div>
+    <div class="t-seg">
+      <div class="t-num" id="t-min">00</div>
+      <div class="t-lbl">MIN</div>
+    </div>
+    <div class="t-sep">|</div>
+    <div class="t-seg">
+      <div class="t-num" id="t-sec">00</div>
+      <div class="t-lbl">SEC</div>
     </div>
   </div>
 
-  <p class="rt-footer font-handwritten">and counting ♡</p>
+  <p class="counting">and counting ♡</p>
 
-</section>
+  <div class="hg-wrap">
+    <svg width="64" height="100" viewBox="0 0 64 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clipPath id="hg-top-clip">
+          <polygon points="4,12 60,12 38,50 26,50"/>
+        </clipPath>
+        <clipPath id="hg-bot-clip">
+          <polygon points="26,54 38,54 60,92 4,92"/>
+        </clipPath>
+      </defs>
+
+      <!-- Top cap -->
+      <rect x="2" y="4" width="60" height="10" rx="5"
+            fill="#FFF8F2" stroke="#E8A0BF" stroke-width="1.8"/>
+
+      <!-- Top chamber -->
+      <polygon points="4,12 60,12 38,50 26,50"
+               fill="#FFF8F2" stroke="#E8A0BF" stroke-width="1.8"
+               stroke-linejoin="round"/>
+
+      <!-- Neck sides -->
+      <line x1="26" y1="50" x2="26" y2="54" stroke="#E8A0BF" stroke-width="1.8"/>
+      <line x1="38" y1="50" x2="38" y2="54" stroke="#E8A0BF" stroke-width="1.8"/>
+
+      <!-- Bottom chamber -->
+      <polygon points="26,54 38,54 60,92 4,92"
+               fill="#FFF8F2" stroke="#E8A0BF" stroke-width="1.8"
+               stroke-linejoin="round"/>
+
+      <!-- Bottom cap -->
+      <rect x="2" y="88" width="60" height="10" rx="5"
+            fill="#FFF8F2" stroke="#E8A0BF" stroke-width="1.8"/>
+
+      <!-- Top sand — anchored at top, shrinks down -->
+      <g clip-path="url(#hg-top-clip)">
+        <rect id="top-sand" x="3" y="12" width="58" height="38"
+              fill="#F4C6D7" opacity="0.9"/>
+      </g>
+
+      <!-- Bottom sand — grows up from bottom -->
+      <g clip-path="url(#hg-bot-clip)">
+        <rect id="bot-sand" x="3" y="92" width="58" height="0"
+              fill="#E8A0BF" opacity="0.9"/>
+      </g>
+
+      <!-- Drip -->
+      <line x1="32" y1="50" x2="32" y2="54"
+            stroke="#D977A0" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+
+      <!-- Drops -->
+      <circle id="drop1" cx="32" cy="50" r="2"   fill="#D977A0" opacity="0"/>
+      <circle id="drop2" cx="32" cy="50" r="1.5" fill="#E8A0BF" opacity="0"/>
+      <circle id="drop3" cx="32" cy="50" r="1"   fill="#E8A0BF" opacity="0"/>
+    </svg>
+    <p class="hg-text">time is passing… but we stay ♡</p>
+  </div>
+
+</div>

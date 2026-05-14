@@ -1,3 +1,35 @@
-:host {
+.timer-map-section {
+  background: var(--color-cream);
+  padding: 60px 32px;
+  border-top: 1px solid var(--color-beige);
+  border-bottom: 1px solid var(--color-beige);
+}
+
+.timer-map-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  align-items: stretch; /* ← THIS is what makes cards equal height */
+}
+
+/* DELETE the .timer-card / .map-card block that was here —
+   those class names belong to the components themselves,
+   styling them from the parent causes double borders and overrides */
+
+app-relationship-timer,
+app-distance-map {
   display: block;
+  height: 100%;
+}
+
+@media (max-width: 900px) {
+  .timer-map-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .timer-map-section {
+    padding: 40px 16px;
+  }
 }
